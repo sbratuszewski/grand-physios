@@ -56,13 +56,16 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-blue-400 text-white p-4">
-          <ul className="flex flex-col gap-4 text-white font-medium">
+        <div className="md:hidden bg-white shadow-lg p-4 text-end">
+          <ul className="flex flex-col divide-y-1 divide-gray-200 font-medium">
             {navItems.map(({ name, href }) => (
-              <li key={name} className="">
+              <li
+                key={name}
+                className="py-4 px-2 hover:bg-gray-100 hover:text-sky-500 cursor-pointer trasition-colors"
+              >
                 <a
                   href={href}
-                  className="hover:text-red-500 cursor-pointer trasition-colors"
+                  className=""
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {name}
@@ -70,7 +73,7 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <button className="hover:bg-red-700 w-30 bg-red-500 px-4 py-2 rounded cursor-pointer transition-colors">
+              <button className="text-white hover:bg-sky-700 w-30 bg-sky-500 px-4 py-2 mt-3 rounded cursor-pointer transition-colors">
                 Contact Us
               </button>
             </li>
