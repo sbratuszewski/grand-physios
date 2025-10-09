@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Button from './Button'
+import { X, Menu } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '#' },
@@ -22,6 +22,7 @@ const Navbar = () => {
             Grand Physios
           </a>
         </div>
+
         {/* Links */}
         <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-gray-700 font-medium">
           {navItems.map(({ name, href }) => (
@@ -35,11 +36,47 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
         {/* Contact Button */}
         <div className="hidden md:block">
-          <Button onClick={toggleMenu} name="Contact Us" link="#" />
+          <button className="cursor-pointer bg-red-500 px-4 py-2 rounded text-white">
+            Contact Us
+          </button>
+        </div>
+
+        {/* Menu */}
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            className="p-1 rounded-md cursor-pointer"
+          >
+            {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          </button>
         </div>
       </div>
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-blue-400 text-white p-4">
+          <ul className="flex flex-col gap-4 text-white font-medium">
+            {navItems.map(({ name, href }) => (
+              <li key={name} className="">
+                <a
+                  href={href}
+                  className="hover:text-red-500 cursor-pointer trasition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {name}
+                </a>
+              </li>
+            ))}
+            <li>
+              <button className="hover:bg-red-700 w-30 bg-red-500 px-4 py-2 rounded cursor-pointer transition-colors">
+                Contact Us
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   )
 }
