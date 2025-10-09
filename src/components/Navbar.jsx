@@ -29,7 +29,7 @@ const Navbar = () => {
             <li key={name} className="">
               <a
                 href={href}
-                className="hover:text-green-500 cursor-pointer trasition-colors"
+                className="hover:text-sky-500 cursor-pointer trasition-colors"
               >
                 {name}
               </a>
@@ -39,7 +39,7 @@ const Navbar = () => {
 
         {/* Contact Button */}
         <div className="hidden md:block">
-          <button className="cursor-pointer bg-red-500 px-4 py-2 rounded text-white">
+          <button className="text-white hover:bg-sky-700 w-30 bg-sky-500 px-4 py-2 rounded cursor-pointer transition-colors">
             Contact Us
           </button>
         </div>
@@ -56,8 +56,8 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg p-4 text-end">
-          <ul className="flex flex-col divide-y-1 divide-gray-200 font-medium">
+        <div className="md:hidden bg-white shadow-lg p-4 border-t border-gray-200 text-end">
+          <ul className="divide-y-1 divide-gray-200 font-medium">
             {navItems.map(({ name, href }) => (
               <li
                 key={name}
