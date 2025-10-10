@@ -38,7 +38,7 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-        <div className="hidden md:block">
+        <div className="hidden md:block" data-aos="fade-right">
           <button className="text-white hover:bg-sky-700 w-30 bg-sky-500 px-4 py-2 rounded cursor-pointer transition-colors">
             Contact Us
           </button>
