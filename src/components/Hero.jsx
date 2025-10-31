@@ -2,9 +2,9 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-pink-200 py-12 px-4 mt-16">
+    <section className="relative overflow-hidden bg-gray-200 py-12 px-4 mt-16">
       <div
-        className="bg-sky-900 p-10 rounded-lg text-white text-center"
+        className="bg-gray-300 p-10 rounded-lg text-center"
         data-aos="fade-right"
         data-aos-delay="700"
       >

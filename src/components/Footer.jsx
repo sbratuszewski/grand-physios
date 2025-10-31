@@ -1,3 +1,5 @@
+import { Phone, Mail, MapPin } from 'lucide-react'
+
 export default function Footer() {
   return (
     <footer className="w-full p-6">
@@ -25,8 +27,24 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-3 p-2 md:p-4">
           <h2 className="text-lg tracking-wide uppercase mb-2">Contact</h2>
-          <a href="mailto:">info@grandphysios.com</a>
-          <a href="tel:+">11111111111</a>
+          <div className="flex gap-x-3">
+            <Mail />
+            <a className="flex gap-x-3" href="mailto:info@grandphysios.com">
+              info@grandphysios.com
+            </a>
+          </div>
+          <div className="flex gap-x-3">
+            <Phone />
+            <a className="flex gap-x-3" href="tel:+">
+              11111111111
+            </a>
+          </div>
+          <div className="flex gap-x-3">
+            <MapPin />
+            <a className="flex gap-x-3" href="#">
+              123 Main St, Aberdeen, UK
+            </a>
+          </div>
         </div>
       </div>
 

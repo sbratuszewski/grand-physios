@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full bg-gray-50 top-0 left-0 right-0 z-99">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-3 md:py-4 flex items-center justify-between">
+      <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="">
           <a href="#" className="text-2xl font-bold text-gray-800">
@@ -39,7 +39,7 @@ const Navbar = () => {
 
         {/* Contact Button */}
         <div className="hidden md:block" data-aos="fade-right">
-          <button className="text-white hover:bg-sky-700 w-30 bg-sky-500 px-4 py-2 rounded cursor-pointer transition-colors">
+          <button className="text-white hover:bg-gray-700 w-30 bg-gray-500 px-4 py-2 rounded cursor-pointer transition-colors">
             Contact Us
           </button>
         </div>
@@ -56,12 +56,12 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg p-4 border-t border-gray-200 text-end">
-          <ul className="divide-y-1 divide-gray-200 font-medium">
+        <div className="md:hidden bg-white shadow-lg p-4 text-center">
+          <ul className="font-medium">
             {navItems.map(({ name, href }) => (
               <li
                 key={name}
-                className="py-4 px-2 hover:bg-gray-100 hover:text-sky-500 cursor-pointer trasition-colors"
+                className="py-4 px-2 hover:text-sky-500 cursor-pointer trasition-colors"
               >
                 <a
                   href={href}
@@ -73,8 +73,8 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <button className="text-white hover:bg-sky-700 w-30 bg-sky-500 px-4 py-2 mt-3 rounded cursor-pointer transition-colors">
-                Contact Us
+              <button className="py-4 px-2 hover:text-sky-500 cursor-pointer trasition-colors">
+                Call
               </button>
             </li>
           </ul>
