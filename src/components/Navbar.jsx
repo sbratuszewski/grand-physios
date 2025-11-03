@@ -1,12 +1,14 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { X, Menu } from 'lucide-react'
+import Button from './Button.jsx'
 
 const navItems = [
-  { name: 'Home', href: '#' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Contact', href: '#contact' },
-  { name: 'FAQ', href: '#faq' },
+  { name: 'Home', path: '/', exact: 'true' },
+  { name: 'About', path: '/about' },
+  { name: 'Services', path: '/services' },
+  { name: 'Contact', path: '/contact' },
+  { name: 'FAQ', path: '/faq' },
 ]
 
 const Navbar = () => {
@@ -14,68 +16,74 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   return (
-    <nav className="fixed w-full bg-gray-50 top-0 left-0 right-0 z-99">
+    <nav className="fixed w-full bg-cyan-600 top-0 left-0 right-0 z-[99]">
       <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="">
-          <a href="#" className="text-2xl font-bold text-gray-800">
+          <NavLink to="/" className="text-2xl font-bold text-gray-800">
             Grand Physios
-          </a>
+          </NavLink>
         </div>
 
         {/* Links */}
         <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-gray-700 font-medium">
-          {navItems.map(({ name, href }) => (
-            <li key={name} className="">
-              <a
-                href={href}
-                className="hover:text-sky-500 cursor-pointer trasition-colors"
+          {navItems.map((item) => (
+            <li
+              key={item.name}
+              className="hover:text-sky-500 cursor-pointer transition-colors"
+            >
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  isActive ? 'text-red-500 font-bold' : 'text-gray-700'
+                }
               >
-                {name}
-              </a>
+                {item.name}
+              </NavLink>
             </li>
           ))}
         </ul>
 
         {/* Contact Button */}
-        <div className="hidden md:block" data-aos="fade-right">
-          <button className="text-white hover:bg-gray-700 w-30 bg-gray-500 px-4 py-2 rounded cursor-pointer transition-colors">
-            Contact Us
-          </button>
-        </div>
+        <Button
+          text="Contact Us"
+          onClick={() => console.log('Button clicked')}
+          className="hidden md:block text-white hover:bg-gray-700 bg-blue-500"
+        />
 
-        {/* Menu */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="p-1 rounded-md cursor-pointer"
-          >
-            {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
-          </button>
-        </div>
+        {/* Menu Button*/}
+        <Button
+          text={isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          onClick={() => toggleMenu()}
+          className="md:hidden p-1 rounded-md cursor-pointer"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        />
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg p-4 text-center">
+        <div className="md:hidden bg-cyan-500 shadow-lg p-4 text-center">
           <ul className="font-medium">
-            {navItems.map(({ name, href }) => (
+            {navItems.map((item) => (
               <li
-                key={name}
-                className="py-4 px-2 hover:text-sky-500 cursor-pointer trasition-colors"
+                key={item.name}
+                className="py-4 px-2 hover:text-sky-500 cursor-pointer transition-colors"
               >
-                <a
-                  href={href}
+                <NavLink
+                  to={item.path}
                   className=""
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {name}
-                </a>
+                  {item.name}
+                </NavLink>
               </li>
             ))}
             <li>
-              <button className="py-4 px-2 hover:text-sky-500 cursor-pointer trasition-colors">
+              <a
+                href="tel:+123456789"
+                className="py-4 px-2 hover:text-sky-500 cursor-pointer transition-colors"
+              >
                 Call
-              </button>
+              </a>
             </li>
           </ul>
         </div>
