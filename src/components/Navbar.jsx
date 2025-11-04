@@ -45,11 +45,13 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-        <Button
-          text="Contact Us"
-          onClick={() => console.log('Button clicked')}
-          className="hidden md:block text-white hover:bg-gray-700 bg-blue-500"
-        />
+        {/* Contact Button */}
+        <a
+          href="tel:+123456789"
+          className="hidden md:block text-white hover:bg-gray-700 bg-blue-500 px-4 py-2 rounded cursor-pointer transition-colors"
+        >
+          Contact Us
+        </a>
 
         {/* Menu Button*/}
         <Button
