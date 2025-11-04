@@ -1,22 +1,36 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { X, Menu } from 'lucide-react'
+import navItems from '../data/navItems'
 import Button from './Button.jsx'
-
-const navItems = [
-  { name: 'Home', path: '/', exact: 'true' },
-  { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Contact', path: '/contact' },
-  { name: 'FAQ', path: '/faq' },
-]
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <nav className="fixed w-full bg-cyan-600 top-0 left-0 right-0 z-[99]">
+    <nav
+      className={`sticky w-full top-0 left-0 right-0 z-40 transition-colors duration-300 ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      }`}
+    >
       <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="">
@@ -35,7 +49,7 @@ const Navbar = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  isActive ? 'text-red-500 font-bold' : 'text-gray-700'
+                  isActive ? 'text-teal-500 font-bold' : 'text-gray-700'
                 }
               >
                 {item.name}

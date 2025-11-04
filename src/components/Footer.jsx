@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Phone, Mail, MapPin } from 'lucide-react'
+import navItems from '../data/navItems'
 
 const Footer = () => {
   return (
@@ -16,40 +17,22 @@ const Footer = () => {
         </div>
 
         {/* Footer Quick Menu */}
-        <div className="flex flex-col gap-3 p-2 md:p-4">
+        <div className="flex flex-col gap-3 p-2 md:p-4 list-none">
           <h2 className="text-lg tracking-wide uppercase mb-2">Quick Links</h2>
-          <NavLink
-            to="/services"
-            className={({ isActive }) =>
-              isActive ? 'text-red-500 font-bold' : 'text-gray-700'
-            }
-          >
-            Services
-          </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive ? 'text-red-500 font-bold' : 'text-gray-700'
-            }
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive ? 'text-red-500 font-bold' : 'text-gray-700'
-            }
-          >
-            Contact Us
-          </NavLink>
-          <NavLink
-            to="/faq"
-            className={({ isActive }) =>
-              isActive ? 'text-red-500 font-bold' : 'text-gray-700'
-            }
-          >
-            FAQ
-          </NavLink>
+          {navItems.map((item) => (
+            <li key={item.name}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'text-red-500 font-bold'
+                    : 'text-gray-700 hover:text-red-500 transition-colors'
+                }
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          ))}
         </div>
 
         <div className="flex flex-col gap-3 p-2 md:p-4">
