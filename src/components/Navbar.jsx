@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { X, Menu } from 'lucide-react'
+import { X, Menu, Phone } from 'lucide-react'
 import navItems from '../data/navItems'
 import Button from './Button.jsx'
 
@@ -33,23 +33,22 @@ const Navbar = () => {
     >
       <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="">
-          <NavLink to="/" className="text-2xl font-bold text-gray-800">
-            Grand Physios
-          </NavLink>
-        </div>
+        <NavLink to="/" className="text-2xl font-bold">
+          Grand Physios
+        </NavLink>
 
         {/* Links */}
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-gray-700 font-medium">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8 font-medium">
           {navItems.map((item) => (
             <li
               key={item.name}
-              className="hover:text-sky-500 cursor-pointer transition-colors"
+              className="hover:text-teal-700 transition-colors"
             >
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  isActive ? 'text-teal-500 font-bold' : 'text-gray-700'
+                  isActive &&
+                  'text-teal-600 font-bold underline underline-offset-8'
                 }
               >
                 {item.name}
@@ -59,31 +58,25 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-        {/* Contact Button */}
-        <a
-          href="tel:+123456789"
-          className="hidden md:block text-white hover:bg-gray-700 bg-blue-500 px-4 py-2 rounded cursor-pointer transition-colors"
-        >
-          Contact Us
-        </a>
+        <div className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded cursor-pointer transition-colors">
+          <a href="tel:+123456789">Call Us Now</a>
+          <Phone size={16} />
+        </div>
 
         {/* Menu Button*/}
         <Button
           text={isMenuOpen ? <X size={30} /> : <Menu size={30} />}
           onClick={() => toggleMenu()}
-          className="md:hidden p-1 rounded-md cursor-pointer"
+          className="md:hidden p-1 rounded-md hover:text-teal-700 transition-colors cursor-pointer"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         />
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-cyan-500 shadow-lg p-4 text-center">
+        <div className="md:hidden shadow-lg p-4 text-center">
           <ul className="font-medium">
             {navItems.map((item) => (
-              <li
-                key={item.name}
-                className="py-4 px-2 hover:text-sky-500 cursor-pointer transition-colors"
-              >
+              <li key={item.name} className="py-4 px-2">
                 <NavLink
                   to={item.path}
                   className=""
@@ -93,12 +86,12 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
-            <li>
+            <li className="my-5">
               <a
                 href="tel:+123456789"
-                className="py-4 px-2 hover:text-sky-500 cursor-pointer transition-colors"
+                className="py-3 px-5 bg-teal-600 text-white rounded"
               >
-                Call
+                Call Us Now
               </a>
             </li>
           </ul>
