@@ -29,30 +29,30 @@ function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-xl space-y-4"
+      className="max-w-xl mx-auto p-6 space-y-4 bg-gray-200 rounded-lg shadow-lg"
     >
-      <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
+      <h2 className="text-2xl font-semibold mb-4">Send us a message</h2>
 
       <input
         {...register('fullName', { required: true })}
         placeholder="Full name"
-        className="w-full border rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2"
       />
       <input
         {...register('email', { required: true })}
         placeholder="Email address"
-        className="w-full border rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2"
       />
       <input
         {...register('phone', { required: true })}
         placeholder="Phone number"
-        className="w-full border rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2"
       />
       <textarea
         {...register('message', { required: true })}
         placeholder="Message"
         rows="5"
-        className="w-full border rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2"
       />
       <button
         type="submit"
