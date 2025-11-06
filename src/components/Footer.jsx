@@ -5,15 +5,15 @@ import navItems from '../data/navItems'
 
 const Footer = () => {
   return (
-    <footer className="w-full px-4 sm:px-6 md:px-12 lg:px-20 py-5 bg-gray-300 text-gray-800">
+    <footer className="w-full px-4 sm:px-6 md:px-12 lg:px-20 py-5 bg-teal-600 text-gray-100">
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Brand Section */}
         <div className="flex flex-col gap-3 p-2 md:p-4">
           <NavLink
             to="/"
-            className="text-teal-600 text-lg tracking-wide uppercase font-bold mb-2"
+            className="text-lg tracking-wide uppercase font-bold mb-2"
           >
-            Grand Physios logo
+            Grand Physios
           </NavLink>
           <p>Proffesional physiotherapy services.</p>
           <p>Helping Aberdeen stay active and pain-free.</p>
@@ -21,9 +21,7 @@ const Footer = () => {
 
         {/* Footer Quick Menu */}
         <div className="flex flex-col gap-1 p-2 md:p-4 list-none">
-          <h2 className="text-teal-600 text-lg tracking-wide uppercase mb-2">
-            Quick Links
-          </h2>
+          <h2 className="text-lg tracking-wide uppercase mb-2">Quick Links</h2>
           {navItems.map((item) => (
             <li
               key={item.name}
@@ -32,7 +30,7 @@ const Footer = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  isActive && 'text-teal-600 font-bold'
+                  isActive && 'text-teal-900 font-bold'
                 }
               >
                 {item.name}
@@ -42,9 +40,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-2 p-2 md:p-4">
-          <h2 className="text-teal-600 text-lg tracking-wide uppercase mb-2">
-            Our Services
-          </h2>
+          <h2 className="text-lg tracking-wide uppercase mb-2">Our Services</h2>
           <p>Home Visits</p>
           <p>Pain Management</p>
           <p>Post-Surgical Rehab</p>
@@ -53,9 +49,7 @@ const Footer = () => {
 
         {/* Contact Section */}
         <div className="flex flex-col gap-4 p-2 md:p-4">
-          <h2 className="text-teal-600 text-lg tracking-wide uppercase mb-2">
-            Contact
-          </h2>
+          <h2 className="text-lg tracking-wide uppercase mb-2">Contact</h2>
           <div className="flex gap-x-3">
             {/* lucide icon */}
             <Mail />

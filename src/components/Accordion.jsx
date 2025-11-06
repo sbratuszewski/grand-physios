@@ -1,10 +1,10 @@
 import React from 'react'
 import { Plus, Minus } from 'lucide-react'
 
-const Accordion = ({ question, answer }) => {
+const Accordion = ({ question, answer, ...rest }) => {
   const [accordionOpen, setAccordionOpen] = React.useState(false)
   return (
-    <div className="bg-gray-200 p-5 rounded-lg">
+    <div {...rest} className="bg-gray-200 p-5 rounded-lg">
       <button
         className="flex justify-between w-full items-center cursor-pointer"
         onClick={() => setAccordionOpen(!accordionOpen)}
