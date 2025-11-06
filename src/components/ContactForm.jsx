@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from 'emailjs-com'
+import Button from './Button'
 
 function ContactForm() {
   const { register, handleSubmit, reset } = useForm()
@@ -36,30 +37,35 @@ function ContactForm() {
       <input
         {...register('fullName', { required: true })}
         placeholder="Full name"
-        className="w-full bg-white rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
       />
       <input
         {...register('email', { required: true })}
         placeholder="Email address"
-        className="w-full bg-white rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
       />
       <input
         {...register('phone', { required: true })}
         placeholder="Phone number"
-        className="w-full bg-white rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
       />
       <textarea
         {...register('message', { required: true })}
         placeholder="Message"
         rows="5"
-        className="w-full bg-white rounded-lg px-3 py-2"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
       />
-      <button
+      <Button
         type="submit"
-        className="w-full bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-700"
+        className="w-full text-white bg-teal-600 hover:bg-teal-700 shadow-md"
+        text="Send Message"
+      />
+      {/* <button
+        type="submit"
+        className="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-sky-700 shadow-sm"
       >
         Send Message
-      </button>
+      </button> */}
     </form>
   )
 }
