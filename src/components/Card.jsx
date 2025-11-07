@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ({ title, description, image, className }) => {
+const Card = ({ title, description, className, ...rest }) => {
   return (
     <div className={`rounded-lg shadow-lg p-4 ${className}`}>
       {image && (

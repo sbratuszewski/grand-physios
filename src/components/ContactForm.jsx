@@ -1,72 +1,101 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser'
+import toast, { Toaster } from 'react-hot-toast'
 import Button from './Button'
 
-function ContactForm() {
-  const { register, handleSubmit, reset } = useForm()
+const ContactForm = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm()
 
-  const onSubmit = async (data) => {
-    try {
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-          from_name: data.fullName,
-          from_email: data.email,
-          phone: data.phone,
-          message: data.message,
-        },
-        'YOUR_PUBLIC_KEY'
-      )
-      alert("Message sent! We'll contact you soon.")
-      reset()
-    } catch (err) {
-      console.error(err)
-      alert('Error sending message, please try again.')
-    }
+  const [loading, setLoading] = React.useState(false)
+
+  const onSubmit = (data) => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    setLoading(true)
+    emailjs
+      .send(serviceId, templateId, data, publicKey)
+      .then(() => {
+        toast.success('✅ Message sent!')
+        reset()
+      })
+      .catch(() => toast.error('❌ Something went wrong.'))
+      .finally(() => setLoading(false))
   }
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-xl mx-auto p-6 space-y-4 bg-gray-200 rounded-lg shadow-lg"
+      className="max-w-xl mx-auto p-6 space-y-4 text-gray-800 bg-gray-200 rounded-lg shadow-lg"
+      data-aos="fade-right"
+      data-aos-offset="100"
     >
-      <h2 className="text-2xl font-semibold mb-4">Send us a message</h2>
+      <Toaster position="top-right" />
+      <h2 className="text-2xl font-semibold text-teal-600 mb-4">
+        Send us a message
+      </h2>
 
       <input
-        {...register('fullName', { required: true })}
+        {...register('name', { required: true })}
         placeholder="Full name"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
       />
+      {errors.name && <p className="text-red-600 text-sm">Name is required</p>}
+
       <input
-        {...register('email', { required: true })}
+        {...register('email', {
+          required: 'Email is required',
+          pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
+        })}
         placeholder="Email address"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
       />
+      {errors.email && (
+        <p className="text-red-600 text-sm">{errors.email.message}</p>
+      )}
+
       <input
-        {...register('phone', { required: true })}
-        placeholder="Phone number"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
+        {...register('phone', {
+          pattern: { value: /^[+\d\s-]+$/, message: 'Invalid phone number' },
+        })}
+        placeholder="Phone number (optional)"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
       />
+      {errors.phone && (
+        <p className="text-red-600 text-sm">{errors.phone.message}</p>
+      )}
+
       <textarea
         {...register('message', { required: true })}
-        placeholder="Message"
-        rows="5"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm"
+        placeholder="Enquiry"
+        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
       />
+      {errors.message && (
+        <p className="text-red-600 text-sm">Message is required</p>
+      )}
+
       <Button
         type="submit"
-        className="w-full text-white bg-teal-600 hover:bg-teal-700 shadow-md"
-        text="Send Message"
-      />
-      {/* <button
-        type="submit"
-        className="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-sky-700 shadow-sm"
+        className="w-full text-white bg-teal-600 hover:bg-teal-700 shadow-md flex items-center justify-center gap-2 py-2"
+        disabled={loading}
       >
-        Send Message
-      </button> */}
+        {loading && (
+          <span
+            className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+            role="status"
+          ></span>
+        )}
+        {loading ? 'Sending...' : 'Submit'}
+      </Button>
     </form>
   )
 }
+
 export default ContactForm

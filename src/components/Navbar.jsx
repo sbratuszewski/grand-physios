@@ -58,7 +58,7 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-        <div className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded cursor-pointer transition-colors">
+        <div className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded cursor-pointer transition-colors shadow-sm">
           <a href="tel:+123456789">Call Us Now</a>
           <Phone size={16} />
         </div>
@@ -77,11 +77,7 @@ const Navbar = () => {
           <ul className="font-medium">
             {navItems.map((item) => (
               <li key={item.name} className="py-4 px-2">
-                <NavLink
-                  to={item.path}
-                  className=""
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <NavLink to={item.path} onClick={() => setIsMenuOpen(false)}>
                   {item.name}
                 </NavLink>
               </li>

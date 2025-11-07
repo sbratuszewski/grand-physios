@@ -30,7 +30,8 @@ const Footer = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  isActive && 'text-teal-900 font-bold'
+                  isActive &&
+                  'text-teal-200 font-bold underline underline-offset-4'
                 }
               >
                 {item.name}
