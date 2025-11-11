@@ -37,7 +37,6 @@ const ContactForm = () => {
       data-aos="fade-right"
       data-aos-offset="100"
     >
-      <Toaster position="top-right" />
       <h2 className="text-2xl font-semibold text-teal-600 mb-4">
         Send us a message
       </h2>
@@ -94,6 +93,7 @@ const ContactForm = () => {
         )}
         {loading ? 'Sending...' : 'Submit'}
       </Button>
+      <Toaster position="bottom-center" />
     </form>
   )
 }

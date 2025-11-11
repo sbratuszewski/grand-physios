@@ -58,36 +58,47 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-        <div className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded cursor-pointer transition-colors shadow-sm">
-          <a href="tel:+123456789">Call Us Now</a>
-          <Phone size={16} />
-        </div>
+
+        <a
+          href="tel:+123456789"
+          className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded cursor-pointer transition-colors shadow-sm"
+        >
+          Call Us Now <Phone size={16} />
+        </a>
 
         {/* Menu Button*/}
         <Button
-          text={isMenuOpen ? <X size={30} /> : <Menu size={30} />}
           onClick={() => toggleMenu()}
           className="md:hidden p-1 rounded-md hover:text-teal-700 transition-colors cursor-pointer"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-        />
+        >
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+        </Button>
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden shadow-lg p-4 text-center">
           <ul className="font-medium">
             {navItems.map((item) => (
-              <li key={item.name} className="py-4 px-2">
-                <NavLink to={item.path} onClick={() => setIsMenuOpen(false)}>
+              <li
+                key={item.name}
+                className="py-4 px-2 hover:bg-teal-100 transition-colors"
+              >
+                <NavLink
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block"
+                >
                   {item.name}
                 </NavLink>
               </li>
             ))}
-            <li className="my-5">
+            <li>
               <a
                 href="tel:+123456789"
-                className="py-3 px-5 bg-teal-600 text-white rounded"
+                className="flex basis-1/3 justify-center items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded cursor-pointer transition-colors shadow-sm"
               >
-                Call Us Now
+                Call Us Now <Phone size={16} />
               </a>
             </li>
           </ul>

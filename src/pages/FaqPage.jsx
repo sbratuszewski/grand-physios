@@ -42,7 +42,6 @@ const FaqPage = () => {
                 answer={item.answer}
                 data-aos="fade-right"
                 data-aos-delay={delay}
-                data-aos-offset="100"
               />
             )
           })}
