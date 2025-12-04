@@ -35,7 +35,6 @@ const ContactForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="max-w-xl mx-auto p-6 space-y-4 text-gray-800 bg-gray-200 rounded-lg shadow-lg"
       data-aos="fade-left"
-      data-aos-offset="100"
       data-aos-delay="300"
     >
       {/* <h2 className="text-2xl font-semibold text-gray-600 mb-4">
