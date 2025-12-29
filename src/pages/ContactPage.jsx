@@ -19,7 +19,7 @@ const ContactPage = () => {
         <div
           className="max-w-xl flex flex-col p-6 space-y-4 mx-auto"
           data-aos="fade-right"
-          data-aos-offset="100"
+          data-aos-offset="-100"
         >
           <h3 className="text-2xl text-gray-700">
             If you have any questions, please use the contact form. We'll try to

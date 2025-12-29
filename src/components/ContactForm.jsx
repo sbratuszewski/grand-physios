@@ -37,10 +37,6 @@ const ContactForm = () => {
       data-aos="fade-left"
       data-aos-delay="300"
     >
-      {/* <h2 className="text-2xl font-semibold text-gray-600 mb-4">
-        Send us a message
-      </h2> */}
-
       <input
         {...register('name', { required: true })}
         placeholder="Full name"

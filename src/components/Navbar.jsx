@@ -61,7 +61,7 @@ const Navbar = () => {
 
         <a
           href="tel:+123456789"
-          className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded cursor-pointer transition-colors shadow-sm"
+          className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded-xl cursor-pointer transition-colors shadow-sm"
         >
           Call Us Now <Phone size={16} />
         </a>
@@ -96,7 +96,7 @@ const Navbar = () => {
             <li>
               <a
                 href="tel:+123456789"
-                className="flex justify-center items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 my-5 rounded cursor-pointer transition-colors shadow-sm"
+                className="flex justify-center items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 my-5 rounded-xl cursor-pointer transition-colors shadow-sm"
               >
                 Call Us Now <Phone size={16} />
               </a>

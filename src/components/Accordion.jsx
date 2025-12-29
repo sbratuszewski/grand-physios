@@ -9,7 +9,7 @@ const Accordion = ({ question, answer, ...rest }) => {
         className="flex justify-between w-full items-center cursor-pointer"
         onClick={() => setAccordionOpen(!accordionOpen)}
       >
-        <h2 className="text-2xl font-semibold mb-2">{question}</h2>
+        <h2 className="text-2xl font-semibold mb-2 text-left">{question}</h2>
         {accordionOpen ? <Minus size={30} /> : <Plus size={30} />}
       </button>
       <div
