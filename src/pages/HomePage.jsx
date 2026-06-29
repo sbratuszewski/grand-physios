@@ -1,13 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import heroImg from '../assets/water.png'
+import heroImg from '../assets/grand-physios-hero-pic2.png'
 import Button from '../components/Button'
 
 const HomePage = () => {
   return (
     <div>
-      <section className="py-20 px-6 text-slate-800">
-        <div className="flex gap-10 justify-around">
+      <section className="relative px-6 text-slate-800">
+        <div className="flex">
           <div className="">
             <h1 className="">Grand Physios</h1>
             <h2 className="">
@@ -24,12 +24,8 @@ const HomePage = () => {
               Book an Appointment
             </NavLink>
           </div>
-          <div>
-            <img
-              src={heroImg}
-              alt="hero_pic"
-              className="h-[300px] rounded-4xl shadow-xl"
-            />
+          <div className="absolute mask-l-from-50% mask-l-to-90%">
+            <img src={heroImg} alt="patient with physiotherapist" />
           </div>
         </div>
       </section>

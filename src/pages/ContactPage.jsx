@@ -1,16 +1,16 @@
 import React from 'react'
 import ContactForm from '../components/ContactForm.jsx'
 import { Phone } from 'lucide-react'
-import contactHero from '../assets/close-up-person-working-call-center.jpg'
+// import contactHero from '../assets/close-up-person-working-call-center.jpg'
 const ContactPage = () => {
   return (
     <div className="bg-gray-100">
       <div className="relative w-full">
-        <img
+        {/* <img
           src={contactHero}
           alt="man-with-headset"
           className="w-full h-75 xl:h-100 object-cover"
-        />
+        /> */}
         <h1 className="absolute top-30 right-20 xs:right-30 xl:right-60 text-4xl lg:text-5xl font-bold mb-8 text-center uppercase mb-10">
           Contact Us
         </h1>
