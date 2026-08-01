@@ -10,7 +10,13 @@ import {
 } from 'lucide-react'
 
 import heroImg from '../assets/grand-physios-hero-pic2.png'
-import Button from '../components/Button'
+import Button from '../components/ui/Button'
+import HeroSection from '../components/home/HeroSection'
+import BenefitsSection from '../components/home/BenefitsSection'
+import FeaturedProducts from '../components/home/FeaturedProducts'
+import ConsultationSection from '../components/home/ConsultationSection'
+import AboutSection from '../components/home/AboutSection'
+import TestimonialsSection from '../components/home/TestimonialsSection'
 
 const HomePage = () => {
   return (
@@ -116,20 +122,18 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      
+      <HeroSection />
 
-      <>
-    <HeroSection />
+      <BenefitsSection />
 
-    <BenefitsSection />
+      <FeaturedProducts />
 
-    <FeaturedProducts />
+      <ConsultationSection />
 
-    <ConsultationSection />
+      <AboutSection />
 
-    <AboutSection />
-
-    <TestimonialsSection />
-</>
+      <TestimonialsSection />
     </>
   )
 }

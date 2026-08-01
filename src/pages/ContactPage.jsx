@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactForm from '../components/ContactForm.jsx'
+import ContactForm from '../components/layout/ContactForm.jsx'
 import { Phone } from 'lucide-react'
 const ContactPage = () => {
   return (

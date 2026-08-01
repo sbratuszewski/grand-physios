@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 import toast, { Toaster } from 'react-hot-toast'
-import Button from './Button'
+import Button from '../ui/Button'
 
 const ContactForm = () => {
   const {

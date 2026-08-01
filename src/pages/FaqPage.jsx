@@ -1,5 +1,5 @@
 import React from 'react'
-import Accordion from '../components/Accordion.jsx'
+import Accordion from '../components/ui/Accordion.jsx'
 
 const faqList = [
   {

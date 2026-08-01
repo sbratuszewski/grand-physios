@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Hero = () => {
+const HeroSection = () => {
   return (
     <section className="relative overflow-hidden bg-gray-200 py-12 px-4 mt-16">
       <div
@@ -13,7 +13,8 @@ const Hero = () => {
         <button className="bg-sky-100 px-5 py-2 rounded-lg"> Call Us</button>
       </div>
     </section>
+
   )
 }
 
-export default Hero
+export default HeroSection

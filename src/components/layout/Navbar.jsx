@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { X, Menu, Phone } from 'lucide-react'
-import navItems from '../data/navItems'
-import Button from './Button.jsx'
+import navItems from '../../data/navItems.js'
+import Button from '../ui/Button.jsx'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Phone, Mail, MapPin } from 'lucide-react'
-import navItems from '../data/navItems'
+import navItems from '../../data/navItems'
 
 const Footer = () => {
   return (
