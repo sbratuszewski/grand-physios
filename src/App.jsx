@@ -1,9 +1,9 @@
 import { React, useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import Navbar from './components/Navbar'
 import Routes from './routes/Routes'
-import Footer from './components/Footer'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 
 const App = () => {
   useEffect(() => {
