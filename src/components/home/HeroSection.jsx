@@ -1,4 +1,14 @@
-import React from 'react'
+import { NavLink } from 'react-router-dom'
+import {
+  Phone,
+  ShoppingBag,
+  Award,
+  HeartHandshake,
+  Package,
+} from 'lucide-react'
+
+import heroImg from '../../assets/grand-physios-hero-pic2.png'
+import Button from '../ui/Button'
 
 const HeroSection = () => {
   return (
