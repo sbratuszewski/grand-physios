@@ -5,7 +5,7 @@ import HomePage from '../pages/HomePage'
 import AboutPage from '../pages/AboutPage'
 import ServicesPage from '../pages/ServicesPage'
 import ContactPage from '../pages/ContactPage'
-import ErrorPage from '../pages/ErrorPage'
+import NotFoundPage from '../pages/NotFoundPage'
 import FaqPage from '../pages/FaqPage'
 
 const Page = () => {
@@ -16,7 +16,7 @@ const Page = () => {
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/faq" element={<FaqPage />} />
-      <Route path="*" element={<ErrorPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

@@ -10,7 +10,7 @@ const App = () => {
     AOS.init({
       duration: 1000,
       easing: 'ease-in-out',
-      once: false,
+      once: true,
       offset: 100,
     })
   }, [])

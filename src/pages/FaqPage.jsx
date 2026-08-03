@@ -1,82 +1,73 @@
 import React from 'react'
 import Accordion from '../components/ui/Accordion.jsx'
-
-const faqList = [
-  {
-    question: 'Is treatment funded by the NHS?',
-    answer:
-      'No, Grandphysios is not funded by the NHS. We are a team of private musculoskeletal (MSK) physiotherapists providing personalised, high-quality care.',
-  },
-  {
-    question: 'How soon can I get an appointment?',
-    answer:
-      'We aim to offer appointments within 24–48 hours of your initial enquiry. Availability may vary depending on demand, so please contact us directly to secure your preferred time.',
-  },
-  {
-    question: 'Are Grandphysios physiotherapists HCPC registered?',
-    answer:
-      'Yes. All our physiotherapists are registered with the Health and Care Professions Council (HCPC) and are also members of the Chartered Society of Physiotherapy (CSP).',
-  },
-  {
-    question: 'Do I need a GP referral to book an appointment?',
-    answer:
-      'No GP referral is required. You can book an appointment with us directly at any time.',
-  },
-  {
-    question: 'How much do sessions cost?',
-    answer:
-      'Our pricing is designed to be accessible and transparent. Session costs may vary depending on the type of service (in-person, virtual, or telephone), travel distance, and the number of sessions required. Please contact us for a personalised quote.',
-  },
-  {
-    question: 'Can I purchase equipment from Grandphysios?',
-    answer:
-      'Yes. We offer a range of high-quality rehabilitation aids, home exercise, and support equipment available through our website. Products can be purchased with or without professional prescription and are designed by experts to support your recovery at home.',
-  },
-  {
-    question: 'Do you offer virtual or online physiotherapy sessions?',
-    answer:
-      'Yes, we offer virtual and telephone physiotherapy consultations for patients who prefer remote care or are unable to attend in person.',
-  },
-  {
-    question: 'What conditions do you treat?',
-    answer:
-      'We treat a wide range of musculoskeletal conditions, including back and neck pain, sports injuries, post-operative rehabilitation, joint problems, and work-related injuries.',
-  },
-  {
-    question: 'Do you offer home visit appointments?',
-    answer:
-      'Yes, we provide home visit physiotherapy services for patients who prefer treatment in the comfort of their own home.',
-  },
-  {
-    question: 'Do you accept private health insurance?',
-    answer:
-      'We work with selected private health insurers. Please contact us to confirm whether your policy is accepted.',
-  },
-]
+import faqList from '../data/faqList.js'
+import Button from '../components/ui/Button.jsx'
+import { MessageCircle } from 'lucide-react'
 
 const FaqPage = () => {
+  // Loading state with modern spinner matching the site theme
+  if (!faqList || !Array.isArray(faqList)) {
+    return (
+      <div className="flex justify-center items-center min-h-[50vh] text-slate-500 font-medium">
+        <span className="w-6 h-6 border-2 border-teal-600 border-t-transparent rounded-full animate-spin mr-3" />
+        Loading FAQ...
+      </div>
+    )
+  }
+
   return (
-    <div className="bg-gray-100 py-10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-12">
-        <h1 className="text-4xl font-bold mb-8 text-center mb-10">
-          Frequently Asked Questions
-        </h1>
-        <div className="space-y-6 text-left">
-          {/* question / answer list */}
-          {faqList.map((item, index) => {
-            const delay = index * 250
-            return (
-              <Accordion
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                data-aos="fade-up"
-                data-aos-delay={delay}
-                data-aos-offset="-100"
-              />
-            )
-          })}
+    <div className="relative w-full bg-slate-50 min-h-screen py-16 sm:py-24 overflow-hidden">
+      {/* BACKGROUND ACCENT: Soft glowing radial blob behind the FAQ container */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-teal-200/30 blur-3xl rounded-full pointer-events-none z-0" />
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+          <span className="inline-flex items-center rounded-full bg-teal-100/60 border border-teal-200 px-4 py-2 text-sm font-semibold text-teal-800 mb-4 backdrop-blur-sm">
+            Got Questions? We've Got Answers
+          </span>
+
+          <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4">
+            Frequently Asked{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-400">
+              Questions
+            </span>
+          </h1>
+
+          <p className="text-lg text-slate-600 max-w-xl mx-auto">
+            Everything you need to know about our physiotherapy consultations, online store, and rehabilitation products.
+          </p>
         </div>
+
+        {/* FAQ List Container */}
+        <div className="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          {faqList.map((item, index) => (
+            <Accordion
+              key={index}
+              question={item.question}
+              answer={item.answer}
+            />
+          ))}
+        </div>
+
+        {/* Additional Contact CTA Banner */}
+        <div
+          className="mt-16 text-center bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-3xl p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6"
+          data-aos="fade-up"
+        >
+          <div className="text-center sm:text-left">
+            <h3 className="text-xl font-bold text-slate-900">Still have questions?</h3>
+            <p className="text-slate-600 text-sm sm:text-base mt-1">
+              Can't find the answer you're looking for? Please get in touch with our team.
+            </p>
+          </div>
+          <Button to="/contact" size="md" className="shrink-0">
+            <MessageCircle size={18} />
+            Contact Us
+          </Button>
+        </div>
+
       </div>
     </div>
   )

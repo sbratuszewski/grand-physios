@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { X, Menu, Phone } from 'lucide-react'
+import { X, Menu, MessageCircle } from 'lucide-react'
 import navItems from '../../data/navItems.js'
 import logo from '../../assets/GP_logo.svg'
 import Button from '../ui/Button.jsx'
@@ -39,7 +39,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <li
               key={item.name}
-              className="hover:text-teal-700 transition-colors"
+              className="hover:text-teal-700 transition-all duration-300"
             >
               <NavLink
                 to={item.path}
@@ -55,24 +55,27 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Contact Button */}
-        <Button to="/contact" className="hidden lg:flex">
-          Get in Touch
-        </Button>
+        {/* Desktop Contact CTA Button */}
+        <div className="hidden lg:block">
+          <Button to="/contact" size="md">
+            <MessageCircle
+              size={18}
+              className="transition-transform duration-300 group-hover:scale-110"
+            />
+            Get in Touch
+          </Button>
+        </div>
 
         {/* Menu Button*/}
         <Button
           onClick={toggleMenu}
-          variant=""
-          className="lg:hidden cursor-pointer"
+          variant="light"
+          className="lg:hidden"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
-          {isMenuOpen ? (
-            <X size={30} className="text-teal-600" />
-          ) : (
-            <Menu size={30} className="text-teal-600" />
-          )}
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
         </Button>
+        {/* Mobile Menu Toggle Button - Czysta ikona bez tła */}
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (

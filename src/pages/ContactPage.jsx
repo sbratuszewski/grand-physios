@@ -1,28 +1,45 @@
 import React from 'react'
-import ContactForm from '../components/layout/ContactForm.jsx'
-import { Phone } from 'lucide-react'
+import Container from '../components/ui/Container'
+import ContactForm from '../components/contact/ContactForm'
+import ContactInfoBlock from '../components/contact/ContactInfoBlock'
+
 const ContactPage = () => {
   return (
-    <div className="bg-gray-100">
-      <div className="lg:max-w-7xl lg:flex space-y-6 gap-x-6 py-20 px-6 mt-10 mx-auto">
-        <div
-          className="max-w-xl flex flex-col p-6 space-y-4 mx-auto"
-          data-aos="fade-right"
-          data-aos-offset="-100"
-        >
-          <h3 className="text-2xl text-gray-700">
-            If you have any questions, please use the contact form. We'll try to
-            respond as quickly as possible. You can also simply call us.
-          </h3>
-          <a
-            href="tel:+123456789"
-            className="w-42 flex items-center justify-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-4 mx-auto my-6 rounded-xl cursor-pointer transition-colors shadow-lg"
-          >
-            +123456789 <Phone size={16} />
-          </a>
+    <div className="relative w-full bg-slate-50 min-h-[calc(100vh-80px)] pt-6 sm:pt-10 pb-16 sm:pb-24 overflow-hidden">
+      {/* Background Accent */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-teal-200/20 blur-3xl rounded-full pointer-events-none z-0" />
+
+      {/* Wykorzystanie pojedynczego Containera */}
+      <Container className="relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12" data-aos="fade-up">
+          <span className="inline-flex items-center rounded-full bg-teal-100/60 border border-teal-200 px-3.5 py-1 text-xs sm:text-sm font-semibold text-teal-800 mb-3 backdrop-blur-sm">
+            Get In Touch
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+            Let's Start Your{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-400">
+              Recovery
+            </span>
+          </h1>
+          <p className="text-slate-600 text-sm sm:text-base mt-2">
+            Have questions about our products or need to book a physical consultation? Drop us a message below.
+          </p>
         </div>
-        <ContactForm className="mx-auto" />
-      </div>
+
+        {/* Content Grid */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="lg:col-span-5 space-y-6" data-aos="fade-right">
+            <ContactInfoBlock />
+          </div>
+
+          <div className="lg:col-span-7" data-aos="fade-left">
+            <ContactForm />
+          </div>
+        </div>
+
+      </Container>
     </div>
   )
 }

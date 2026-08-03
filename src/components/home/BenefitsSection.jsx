@@ -1,58 +1,39 @@
 import React from 'react'
-import Container from '../ui/Container.jsx'
-import { Phone, Award, HeartHandshake, Package } from 'lucide-react'
+import Container from '../ui/Container'
+import benefits  from '../../data/benefits'
 
 const BenefitsSection = () => {
   return (
-    <Container>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 divide-y sm:divide-y-0 lg:divide-x divide-gray-200">
-        {/* Element 1 */}
-        <div className="flex items-start gap-4 pt-4 sm:pt-0 lg:px-4 lg:first:pl-0">
-          <Award className="text-teal-600 w-6 h-6 shrink-0 mt-1" />
-          <div>
-            <h4 className="font-semibold text-slate-900">Expert Care</h4>
-            <p className="text-sm text-slate-500 mt-0.5">
-              Qualified MSK physiotherapists
-            </p>
-          </div>
+    <section className="py-12 bg-white border-y border-slate-200/60 relative z-20">
+      <Container>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {benefits.map((item, idx) => {
+            const Icon = item.icon
+            return (
+              <div
+                key={idx}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-slate-50/80 border border-slate-100 hover:border-teal-200/80 hover:bg-white hover:shadow-xl hover:shadow-teal-600/5 hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-teal-100/60 text-teal-700 flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                  <Icon size={22} />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
         </div>
-
-        {/* Element 2 */}
-        <div className="flex items-start gap-4 pt-4 sm:pt-0 lg:px-4">
-          <Phone className="text-teal-600 w-6 h-6 shrink-0 mt-1" />
-          <div>
-            <h4 className="font-semibold text-slate-900">By Phone</h4>
-            <p className="text-sm text-slate-500 mt-0.5">
-              Convenient consultations
-            </p>
-          </div>
-        </div>
-
-        {/* Element 3 */}
-        <div className="flex items-start gap-4 pt-4 sm:pt-0 lg:px-4">
-          <Package className="text-teal-600 w-6 h-6 shrink-0 mt-1" />
-          <div>
-            <h4 className="font-semibold text-slate-900">Premium Products</h4>
-            <p className="text-sm text-slate-500 mt-0.5">
-              Carefully selected supports
-            </p>
-          </div>
-        </div>
-
-        {/* Element 4 */}
-        <div className="flex items-start gap-4 pt-4 sm:pt-0 lg:px-4 lg:last:pr-0">
-          <HeartHandshake className="text-teal-600 w-6 h-6 shrink-0 mt-1" />
-          <div>
-            <h4 className="font-semibold text-slate-900">Trusted</h4>
-            <p className="text-sm text-slate-500 mt-0.5">
-              Hundreds of happy patients
-            </p>
-          </div>
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   )
 }
 
 export default BenefitsSection
-
