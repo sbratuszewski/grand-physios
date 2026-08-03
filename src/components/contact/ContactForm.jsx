@@ -23,71 +23,97 @@ const ContactForm = () => {
     emailjs
       .send(serviceId, templateId, data, publicKey)
       .then(() => {
-        toast.success('✅ Message sent!')
+        toast.success('✅ Message sent successfully!')
         reset()
       })
-      .catch(() => toast.error('❌ Something went wrong.'))
+      .catch(() => toast.error('❌ Something went wrong. Please try again.'))
       .finally(() => setLoading(false))
   }
+
+  // High-contrast input styling for dark card container
+  const inputClass =
+    'w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3.5 text-slate-100 placeholder-slate-500 transition-all duration-300 focus:outline-none focus:border-teal-400 focus:ring-4 focus:ring-teal-400/20 focus:bg-slate-800 shadow-inner'
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-xl mx-auto p-6 space-y-4 text-gray-800 bg-gray-200 rounded-lg shadow-lg"
+      className="w-full bg-slate-900 rounded-3xl shadow-2xl shadow-slate-900/20 border border-slate-800 p-6 sm:p-10 space-y-6"
     >
-      <input
-        {...register('name', { required: true })}
-        placeholder="Full name"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
-      />
-      {errors.name && <p className="text-red-600 text-sm">Name is required</p>}
+      <div>
+        <input
+          {...register('name', { required: 'Name is required' })}
+          placeholder="Full name"
+          className={inputClass}
+        />
+        {errors.name && (
+          <p className="text-red-400 text-sm mt-2 ml-1">
+            {errors.name.message}
+          </p>
+        )}
+      </div>
 
-      <input
-        {...register('email', {
-          required: 'Email is required',
-          pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
-        })}
-        placeholder="Email address"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
-      />
-      {errors.email && (
-        <p className="text-red-600 text-sm">{errors.email.message}</p>
-      )}
+      <div>
+        <input
+          {...register('email', {
+            required: 'Email is required',
+            pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
+          })}
+          placeholder="Email address"
+          className={inputClass}
+        />
+        {errors.email && (
+          <p className="text-red-400 text-sm mt-2 ml-1">
+            {errors.email.message}
+          </p>
+        )}
+      </div>
 
-      <input
-        {...register('phone', {
-          required: 'Phone number is required',
-          pattern: { value: /^[+\d\s-]+$/, message: 'Invalid phone number' },
-        })}
-        placeholder="Phone number"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
-      />
-      {errors.phone && (
-        <p className="text-red-600 text-sm">{errors.phone.message}</p>
-      )}
+      <div>
+        <input
+          {...register('phone', {
+            required: 'Phone number is required',
+            pattern: { value: /^[+\d\s-]+$/, message: 'Invalid phone number' },
+          })}
+          placeholder="Phone number"
+          className={inputClass}
+        />
+        {errors.phone && (
+          <p className="text-red-400 text-sm mt-2 ml-1">
+            {errors.phone.message}
+          </p>
+        )}
+      </div>
 
-      <textarea
-        {...register('message', { required: true })}
-        placeholder="Product & Consultation Inquiries"
-        className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
-      />
-      {errors.message && (
-        <p className="text-red-600 text-sm">Message is required</p>
-      )}
+      <div>
+        <textarea
+          {...register('message', { required: 'Message is required' })}
+          placeholder="How can we help you today?"
+          rows={4}
+          className={`${inputClass} resize-none`}
+        />
+        {errors.message && (
+          <p className="text-red-400 text-sm mt-2 ml-1">
+            {errors.message.message}
+          </p>
+        )}
+      </div>
 
+      {/* Clean button call leveraging central Button component */}
       <Button
         type="submit"
-        className="w-full text-white bg-teal-600 hover:bg-teal-700 shadow-md flex items-center justify-center gap-2 py-2"
+        size="lg"
+        className="w-full mt-2"
         disabled={loading}
       >
         {loading && (
           <span
-            className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+            className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"
             role="status"
           ></span>
         )}
-        {loading ? 'Sending...' : 'Submit'}
+        {loading ? 'Sending Message...' : 'Send Message'}
       </Button>
+
       <Toaster position="bottom-center" />
     </form>
   )
