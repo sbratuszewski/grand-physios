@@ -12,13 +12,13 @@ const HeroSection = () => {
         data-aos="fade"
         data-aos-duration="800"
       >
-        <div className="relative w-1/2 h-full">
+        <div className="relative w-[60vw] h-full">
           <img
             src={heroBg}
             alt="Grand Physios consultation background"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent" />
         </div>
       </div>
 
