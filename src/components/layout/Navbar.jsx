@@ -57,7 +57,7 @@ const Navbar = () => {
 
         {/* Contact Button */}
         <Button to="/contact" className="hidden lg:flex">
-          Book Consultation
+          Get in Touch
         </Button>
 
         {/* Menu Button*/}
