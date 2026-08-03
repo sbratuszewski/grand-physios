@@ -6,8 +6,12 @@ import Button from '../ui/Button'
 const HeroSection = () => {
   return (
     <section className="relative w-full bg-white overflow-hidden flex items-center">
-      {/* 1. TŁO DLA EKRANÓW LG+ (Tylko po prawej stronie) */}
-      <div className="hidden lg:flex absolute inset-0 justify-end">
+      {/* TŁO DESKTOP: Pojawia się płynnie jako całość */}
+      <div 
+        className="hidden lg:flex absolute inset-0 justify-end"
+        data-aos="fade"
+        data-aos-duration="800"
+      >
         <div className="relative w-1/2 h-full">
           <img
             src={heroBg}
@@ -18,11 +22,11 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* 2. TREŚĆ I ZDJĘCIE MOBILNE */}
       <Container className="relative z-10 py-12 lg:py-24">
-        <div className="grid lg:grid-cols-2 items-center gap-8 lg:gap-16">
-          {/* LEWA KOLUMNA (Na mobile pełna szerokość) */}
-          <div className="flex flex-col items-start">
+        <div className="grid lg:grid-cols-2 items-center gap-10 lg:gap-16">
+          
+          {/* CAŁA LEWA STRONA: Wchodzi płynnie jako JEDEN blok */}
+          <div data-aos="fade-up" data-aos-duration="600">
             <span className="inline-flex items-center rounded-full bg-teal-50 px-4 py-2 text-sm font-medium text-teal-700 mb-6">
               Online Physiotherapy • UK Wide
             </span>
@@ -33,8 +37,8 @@ const HeroSection = () => {
               Live Stronger.
             </h1>
 
-            {/* ZDJĘCIE MOBILNE (Widoczne tylko do rozdzielczości lg, umieszczone pod nagłówkiem) */}
-            <div className="w-full mt-6 mb-2 lg:hidden rounded-2xl overflow-hidden shadow-lg">
+            {/* Zdjęcie mobilne */}
+            <div className="w-full my-6 block lg:hidden rounded-2xl overflow-hidden shadow-lg">
               <img
                 src={heroBg}
                 alt="Grand Physios consultation"
@@ -48,7 +52,7 @@ const HeroSection = () => {
               pain and stay active.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-8 lg:mt-10 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8 lg:mt-10">
               <Button to="/contact" size="lg" className="justify-center">
                 <Phone size={20} />
                 Book Consultation
@@ -61,7 +65,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* PRAWA KOLUMNA (Pusta przestrzeń rezerwowana dla tła na desktopie) */}
           <div className="hidden lg:block" />
         </div>
       </Container>
