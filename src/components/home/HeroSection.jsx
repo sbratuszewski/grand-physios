@@ -6,8 +6,8 @@ import Button from '../ui/Button'
 const HeroSection = () => {
   return (
     <section className="relative w-full bg-white overflow-hidden flex items-center">
-      {/* TŁO DESKTOP: Pojawia się płynnie jako całość */}
-      <div 
+      {/* DESKTOP BACKGROUND: Smooth fade-in for the right-side image */}
+      <div
         className="hidden lg:flex absolute inset-0 justify-end"
         data-aos="fade"
         data-aos-duration="800"
@@ -24,8 +24,7 @@ const HeroSection = () => {
 
       <Container className="relative z-10 py-12 lg:py-24">
         <div className="grid lg:grid-cols-2 items-center gap-10 lg:gap-16">
-          
-          {/* CAŁA LEWA STRONA: Wchodzi płynnie jako JEDEN blok */}
+          {/* LEFT COLUMN: Entire text content slides up smoothly as a single unit */}
           <div data-aos="fade-up" data-aos-duration="600">
             <span className="inline-flex items-center rounded-full bg-teal-50 px-4 py-2 text-sm font-medium text-teal-700 mb-6">
               Online Physiotherapy • UK Wide
@@ -37,7 +36,7 @@ const HeroSection = () => {
               Live Stronger.
             </h1>
 
-            {/* Zdjęcie mobilne */}
+            {/* Mobile Image (Visible only on smaller screens) */}
             <div className="w-full my-6 block lg:hidden rounded-2xl overflow-hidden shadow-lg">
               <img
                 src={heroBg}
@@ -52,19 +51,30 @@ const HeroSection = () => {
               pain and stay active.
             </p>
 
+            {/* Call To Action Buttons with hover transitions */}
             <div className="flex flex-col sm:flex-row gap-4 mt-8 lg:mt-10">
-              <Button to="/contact" size="lg" className="justify-center">
+              <Button
+                to="/contact"
+                size="lg"
+                className="justify-center transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:shadow-teal-600/20 active:translate-y-0"
+              >
                 <Phone size={20} />
                 Book Consultation
               </Button>
 
-              <Button to="/shop" variant="secondary" size="lg" className="justify-center">
+              <Button
+                to="/shop"
+                variant="secondary"
+                size="lg"
+                className="justify-center transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md active:translate-y-0"
+              >
                 <ShoppingBag size={20} />
                 Shop Products
               </Button>
             </div>
           </div>
 
+          {/* Empty column reserving space for the background image on desktop */}
           <div className="hidden lg:block" />
         </div>
       </Container>
