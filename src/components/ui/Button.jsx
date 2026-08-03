@@ -15,6 +15,7 @@ const sizes = {
 }
 
 const Button = ({
+  type = 'button',
   children,
   to,
   variant = 'primary',
@@ -27,7 +28,7 @@ rounded-xl
 font-semibold
 transition-all
 duration-300
-inline-flex
+flex
 items-center
 justify-center
 gap-2
@@ -38,7 +39,7 @@ ${className}
 
   if (to) {
     return (
-      <NavLink to={to} className={classes}>
+      <NavLink to={to} className={classes} {...props}>
         {children}
       </NavLink>
     )

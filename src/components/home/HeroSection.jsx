@@ -1,19 +1,12 @@
-import { NavLink } from 'react-router-dom'
-import {
-  Phone,
-  ShoppingBag,
-  Award,
-  HeartHandshake,
-  Package,
-} from 'lucide-react'
-
+import { ShoppingBag, Phone } from 'lucide-react'
+import Container from '../ui/Container'
 import heroImg from '../../assets/grand-physios-hero-pic2.png'
 import Button from '../ui/Button'
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-br from-white via-slate-50 to-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+    <section className="bg-white">
+      <Container className="py-24">
         <div className="grid lg:grid-cols-2 items-center gap-16">
           {/* LEFT */}
 
@@ -35,62 +28,15 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
-              <NavLink to="/contact">
-                <Button className="flex items-center gap-3 px-8 py-4">
-                  <Phone size={20} />
-                  Book a Consultation
-                </Button>
-              </NavLink>
+              <Button to="/contact" size="lg">
+                <Phone size={20} />
+                Book Consultation
+              </Button>
 
-              <NavLink
-                to="/shop"
-                className="flex items-center justify-center gap-3 rounded-xl border border-teal-600 px-8 py-4 font-semibold text-teal-700 hover:bg-teal-50 transition"
-              >
+              <Button to="/shop" variant="secondary" size="lg">
                 <ShoppingBag size={20} />
                 Shop Products
-              </NavLink>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8 mt-16">
-              <div className="flex gap-4">
-                <Award className="text-teal-600" />
-                <div>
-                  <h4 className="font-semibold">Expert Care</h4>
-                  <p className="text-sm text-slate-500">
-                    Qualified MSK physiotherapists
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Phone className="text-teal-600" />
-                <div>
-                  <h4 className="font-semibold">By Phone</h4>
-                  <p className="text-sm text-slate-500">
-                    Convenient consultations
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Package className="text-teal-600" />
-                <div>
-                  <h4 className="font-semibold">Premium Products</h4>
-                  <p className="text-sm text-slate-500">
-                    Carefully selected supports
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <HeartHandshake className="text-teal-600" />
-                <div>
-                  <h4 className="font-semibold">Trusted</h4>
-                  <p className="text-sm text-slate-500">
-                    Hundreds of happy patients
-                  </p>
-                </div>
-              </div>
+              </Button>
             </div>
           </div>
 
@@ -106,12 +52,7 @@ const HeroSection = () => {
             />
           </div>
         </div>
-      </div>
-      <div className="border-y bg-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 py-8">
-          Reduce Pain Improve Performance Prevent Injuries Trusted by Patients
-        </div>
-      </div>
+      </Container>
     </section>
   )
 }

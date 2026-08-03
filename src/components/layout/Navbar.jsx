@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { X, Menu, Phone } from 'lucide-react'
 import navItems from '../../data/navItems.js'
+import logo from '../../assets/GP_logo.svg'
 import Button from '../ui/Button.jsx'
-import ConsultationButton from '../ui/ConsultationButton.jsx'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,15 +30,12 @@ const Navbar = () => {
     >
       <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
-        <NavLink
-          to="/"
-          className="text-2xl font-bold hover:text-teal-600 transition-colors"
-        >
-          Grand Physios
+        <NavLink to="/">
+          <img src={logo} alt="Grand Physios Logo" className="h-10 w-auto" />
         </NavLink>
 
         {/* Links */}
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8 font-medium">
+        <ul className="hidden lg:flex items-center gap-6 lg:gap-8 font-medium">
           {navItems.map((item) => (
             <li
               key={item.name}
@@ -59,26 +56,32 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-
-        <ConsultationButton className="hidden md:flex items-center gap-2 bg-teal-600 text-white hover:bg-teal-700 px-5 py-2 rounded-xl transition-colors shadow-sm" />
+        <Button to="/contact" className="hidden lg:flex">
+          Book Consultation
+        </Button>
 
         {/* Menu Button*/}
         <Button
           onClick={toggleMenu}
-          className="md:hidden p-1 rounded-md hover:text-teal-700 transition-colors cursor-pointer"
+          variant=""
+          className="lg:hidden cursor-pointer"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
-          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          {isMenuOpen ? (
+            <X size={30} className="text-teal-600" />
+          ) : (
+            <Menu size={30} className="text-teal-600" />
+          )}
         </Button>
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden shadow-lg p-4 text-center bg-white">
+        <div className="lg:hidden text-center">
           <ul className="font-medium">
             {navItems.map((item) => (
               <li
                 key={item.name}
-                className="py-4 px-2 hover:bg-teal-100 transition-colors"
+                className="py-4 px-2 hover:bg-teal-600 hover:text-white transition-colors"
               >
                 <NavLink
                   to={item.path}
@@ -89,9 +92,6 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
-            <li>
-              <ConsultationButton className="flex justify-center items-center gap-2 bg-teal-600 text-white hover:bg-teal-700 px-5 py-2 my-5 rounded-xl transition-colors shadow-sm" />
-            </li>
           </ul>
         </div>
       )}
