@@ -3,20 +3,17 @@ import { NavLink } from 'react-router-dom'
 import { X, Menu, Phone } from 'lucide-react'
 import navItems from '../../data/navItems.js'
 import Button from '../ui/Button.jsx'
+import ConsultationButton from '../ui/ConsultationButton.jsx'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 0)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -27,13 +24,16 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky w-full top-0 left-0 right-0 z-40 transition-colors duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      className={`sticky backdrop-blur-md w-full top-0 left-0 right-0 z-40 transition-colors duration-300 ${
+        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md' : 'bg-transparent'
       }`}
     >
       <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
-        <NavLink to="/" className="text-2xl font-bold">
+        <NavLink
+          to="/"
+          className="text-2xl font-bold hover:text-teal-600 transition-colors"
+        >
           Grand Physios
         </NavLink>
 
@@ -47,8 +47,9 @@ const Navbar = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  isActive &&
-                  'text-teal-600 font-bold underline underline-offset-8'
+                  isActive
+                    ? 'text-teal-600 font-bold underline underline-offset-8'
+                    : ''
                 }
               >
                 {item.name}
@@ -59,16 +60,11 @@ const Navbar = () => {
 
         {/* Contact Button */}
 
-        <a
-          href="tel:+123456789"
-          className="hidden md:flex items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 rounded-xl cursor-pointer transition-colors shadow-sm"
-        >
-          Call Us Now <Phone size={16} />
-        </a>
+        <ConsultationButton className="hidden md:flex items-center gap-2 bg-teal-600 text-white hover:bg-teal-700 px-5 py-2 rounded-xl transition-colors shadow-sm" />
 
         {/* Menu Button*/}
         <Button
-          onClick={() => toggleMenu()}
+          onClick={toggleMenu}
           className="md:hidden p-1 rounded-md hover:text-teal-700 transition-colors cursor-pointer"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
@@ -77,7 +73,7 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden shadow-lg p-4 text-center">
+        <div className="md:hidden shadow-lg p-4 text-center bg-white">
           <ul className="font-medium">
             {navItems.map((item) => (
               <li
@@ -94,12 +90,7 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <a
-                href="tel:+123456789"
-                className="flex justify-center items-center gap-2 text-white hover:bg-teal-700 bg-teal-600 px-5 py-2 my-5 rounded-xl cursor-pointer transition-colors shadow-sm"
-              >
-                Call Us Now <Phone size={16} />
-              </a>
+              <ConsultationButton className="flex justify-center items-center gap-2 bg-teal-600 text-white hover:bg-teal-700 px-5 py-2 my-5 rounded-xl transition-colors shadow-sm" />
             </li>
           </ul>
         </div>

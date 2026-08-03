@@ -34,8 +34,6 @@ const ContactForm = () => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="max-w-xl mx-auto p-6 space-y-4 text-gray-800 bg-gray-200 rounded-lg shadow-lg"
-      data-aos="fade-left"
-      data-aos-delay="300"
     >
       <input
         {...register('name', { required: true })}
@@ -58,9 +56,10 @@ const ContactForm = () => {
 
       <input
         {...register('phone', {
+          required: 'Phone number is required',
           pattern: { value: /^[+\d\s-]+$/, message: 'Invalid phone number' },
         })}
-        placeholder="Phone number (optional)"
+        placeholder="Phone number"
         className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
       />
       {errors.phone && (
@@ -69,7 +68,7 @@ const ContactForm = () => {
 
       <textarea
         {...register('message', { required: true })}
-        placeholder="Enquiry"
+        placeholder="Product & Consultation Inquiries"
         className="w-full bg-white rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
       />
       {errors.message && (
