@@ -85,7 +85,7 @@ const Footer = () => {
       </div>
       <div className="mt-12 pt-6 border-t border-slate-800 text-center text-xs text-slate-400">
         <p>
-          Clean code & straight spine{' '}
+          Built without pulling a muscle{' '}
           <Terminal
             size={15}
             className="text-teal-400 inline-block animate-bounce"
