@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Mail, MapPin, ArrowUp } from 'lucide-react'
+import { Mail, MapPin, ArrowUp, Terminal } from 'lucide-react'
 import CspBadge from '../ui/CspBadge'
 
 const Footer = () => {
@@ -21,7 +21,6 @@ const Footer = () => {
             <NavLink to="/" className="inline-block">
               <span className="text-2xl font-black tracking-tight text-white">
                 Grand<span className="text-teal-400">Physios</span>
-                <CspBadge className="mt-4" />
               </span>
             </NavLink>
             <p className="text-slate-400 text-sm leading-relaxed">
@@ -29,6 +28,7 @@ const Footer = () => {
               you stay active and pain-free.
             </p>
 
+            <CspBadge className="mt-4" />
             {/* Aberdeen Badge */}
             <div className="flex items-center gap-2 text-xs font-semibold text-teal-300 bg-teal-950/80 border border-teal-800/60 w-fit px-3 py-1.5 rounded-full">
               <MapPin size={14} className="text-teal-400" />
@@ -85,7 +85,12 @@ const Footer = () => {
       </div>
       <div className="mt-12 pt-6 border-t border-slate-800 text-center text-xs text-slate-400">
         <p>
-          Designed & Developed with ❤️ by{' '}
+          Clean code & straight spine{' '}
+          <Terminal
+            size={15}
+            className="text-teal-400 inline-block animate-bounce"
+          />{' '}
+          by{' '}
           <a
             href="https://sbratuszewski.github.io/my_retro_portfolio/"
             target="_blank"
@@ -93,7 +98,7 @@ const Footer = () => {
             className="text-teal-400 hover:underline font-semibold"
           >
             Stan Bratuszewski
-          </a>
+          </a>{' '}
         </p>
       </div>
     </footer>

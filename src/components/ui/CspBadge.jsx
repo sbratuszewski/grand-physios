@@ -1,10 +1,19 @@
-// src/components/ui/CspBadge.jsx
 import React from 'react'
 
-const CspBadge = ({ className = '' }) => {
+const CspBadge = ({
+  href = 'https://www.csp.org.uk',
+  className = '',
+  bgClass = 'bg-slate-900/50 hover:bg-slate-900',
+  borderClass = 'border-slate-800 hover:border-slate-700',
+  titleClass = 'text-white',
+  subtitleClass = 'text-slate-400',
+}) => {
   return (
-    <div
-      className={`flex items-center gap-3 bg-slate-900/50 border border-slate-800 p-3 rounded-xl max-w-fit ${className}`}
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex items-center gap-3 border p-3 rounded-xl max-w-fit transition-colors ${bgClass} ${borderClass} ${className}`}
     >
       <img
         src="https://www.csp.org.uk/themes/csp/dist/img/crest.svg"
@@ -12,14 +21,16 @@ const CspBadge = ({ className = '' }) => {
         className="h-10 w-auto object-contain"
       />
       <div className="text-left">
-        <p className="text-xs font-bold text-white uppercase tracking-wider">
-          Proud member of CSP
+        <p
+          className={`text-xs font-bold uppercase tracking-wider ${titleClass}`}
+        >
+          Member of CSP
         </p>
-        <p className="text-[11px] text-slate-400">
+        <p className={`text-[11px] ${subtitleClass}`}>
           Chartered Society of Physiotherapy
         </p>
       </div>
-    </div>
+    </a>
   )
 }
 

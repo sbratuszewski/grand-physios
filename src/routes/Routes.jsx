@@ -7,17 +7,21 @@ import ServicesPage from '../pages/ServicesPage'
 import ContactPage from '../pages/ContactPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import FaqPage from '../pages/FaqPage'
+import ScrollToTop from '../components/ScrollToTop' // dostosuj ścieżkę do pliku
 
 const Page = () => {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/services" element={<ServicesPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/faq" element={<FaqPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   )
 }
 

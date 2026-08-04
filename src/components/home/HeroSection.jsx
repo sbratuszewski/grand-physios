@@ -2,6 +2,7 @@ import { ShoppingBag, Phone, Star } from 'lucide-react'
 import Container from '../ui/Container'
 import heroBg from '../../assets/grand-physios-hero-pic2.png'
 import Button from '../ui/Button'
+import CspBadge from '../ui/CspBadge'
 
 const HeroSection = () => {
   return (
@@ -66,7 +67,7 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            {/* Mobile Image (Visible only on smaller screens) with embedded rating */}
+            {/* Mobile Image with embedded rating */}
             <div className="w-full my-8 block lg:hidden rounded-3xl overflow-hidden shadow-2xl relative">
               <img
                 src={heroBg}
